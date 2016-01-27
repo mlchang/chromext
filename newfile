@@ -1,0 +1,16 @@
+Before:
+<a class="btn plan-select" role="button" href="/app_dev.php/route_quote/health-insurance/20158/0/0/p/1" ng-click="selectPlan(plan, $event) &amp;&amp; cookieHelper.saveCurrentPremiums(plan.monthlyCost.toFixed(2), plan.afterSubsidy.toFixed(2))" ng-href="/app_dev.php/route_quote/health-insurance/20158/0/0/p/1">Apply<span> Now</span></a>
+After:
+
+apply-now-loading class on parent div blocking out the css of the smaller div 
+
+
+
+TOP:
+
+ ng-href="{{ path('route_quote', { 'insuranceTypeName': saved_search_helper.getInsuranceTypeName() }) }}/{[{ plan.internalId }]}/{[{ plan.afterSubsidy || plan.afterSubsidy === 0 ? plan.afterSubsidy : plan.monthlyCost }]}/0/p/1"
+
+
+BOTTOM:
+
+ ng-href="{{ path('select_plan', { 'id': '' }) }}/{{ saved_search_helper.getInsuranceTypeName() }}/{[{ plan.urlName }]}/{[{ plan.internalId }]}/{[{ plan.afterSubsidy || plan.afterSubsidy === 0 ? plan.afterSubsidy : plan.monthlyCost }]}"
