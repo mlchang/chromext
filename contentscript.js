@@ -16,27 +16,25 @@ function loadDoc(){
 	xhttp.send();
 	message['directive'] = "apiJSON";
 	message['apiResult'] = xhttp.responseText;
-	console.log("xhttp.responseText: ");
-	console.log(xhttp.responseText);
+	
 	var jsonStr = xhttp.responseText;
 	//REMOVE PROCESS STRING
-	console.log("stringified xhttp.responseText");
-	console.log(jsonStr);
+	
 
 	var trimmedStr = jsonStr.substr(8, jsonStr.length);
-	console.log("printing the trim");
-	console.log(trimmedStr.length);
-	for(var i = 0; i < trimmedStr.length; i++){
-		console.log(trimmedStr[i]);
-	}
-	console.log("trim printing is finished");
-	var newtrim = trimmedStr.substr();
-	console.log("trimmed string");
-	console.log(trimmedStr);
-	var newReponse = JSON.parse(trimmedStr);
-	console.log(newReponse);
+	
+
+	
+	
+	
+	var newtrim = trimmedStr.substr(0, (trimmedStr.length - 1));
+	
+	var newResponse = JSON.parse(newtrim);
+	console.log(newResponse);
+	message['apiResult'] = newResponse;
 	chrome.runtime.sendMessage( message, function(response) {
 		console.log(response.farewell);
 	});
 	//document.getElementById("jsonResult").innerHTML = xhttp.responseText;
 }
+
