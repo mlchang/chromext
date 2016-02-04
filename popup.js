@@ -32,7 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
       if(request.directive = "apiJSON"){
-        request.apiResult;
+        var obj = request.apiResult;
+        var target = obj[Object.keys(obj)[0]];
+        var categories = obj[Object.keys(obj)[0]];
+        
+
+        document.getElementById('zeroRep').innerHTML = target["0"][0];
+        document.getElementById('zeroCon').innerHTML = target["0"][1];
+        document.getElementById('oneRep').innerHTML  = target["1"][0];
+        document.getElementById('oneCon').innerHTML  = target["1"][1];
+        document.getElementById('twoRep').innerHTML  = target["2"][0];
+        document.getElementById('twoCon').innerHTML  = target["2"][1];
+        document.getElementById('fourRep').innerHTML = target["4"][0];
+        document.getElementById('fourCon').innerHTML = target["4"][1];
+
         var jsonStr = JSON.stringify(request.apiResult);
         document.getElementById('jsonResult').innerHTML = jsonStr;
       }

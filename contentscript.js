@@ -14,9 +14,7 @@ function loadDoc(){
 	
 	xhttp.open("GET", apiURL, false);
 	xhttp.send();
-	message['directive'] = "apiJSON";
-	message['apiResult'] = xhttp.responseText;
-	
+	message['directive'] = "apiJSON";	
 	var jsonStr = xhttp.responseText;
 	//REMOVE PROCESS STRING
 	
@@ -37,4 +35,3 @@ function loadDoc(){
 	});
 	//document.getElementById("jsonResult").innerHTML = xhttp.responseText;
 }
-
